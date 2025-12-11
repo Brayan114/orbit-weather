@@ -1,0 +1,7 @@
+{
+  "name": "Orbit Weather & Time",
+  "description": "A premium, space-themed weather and time management suite by Orbit Studios.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

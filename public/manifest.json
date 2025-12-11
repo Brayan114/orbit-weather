@@ -1,0 +1,30 @@
+{
+    "name": "Orbit Weather",
+    "short_name": "Orbit",
+    "description": "A beautiful weather and time management app with world clock, alarms, reminders, and calendar",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a1a",
+    "theme_color": "#06b6d4",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [],
+    "categories": [
+        "weather",
+        "utilities",
+        "productivity"
+    ]
+}

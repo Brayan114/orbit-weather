@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, Wind, Droplets, ArrowUp, ArrowDown, MapPin, Sun, Cloud, CloudRain, CloudLightning, Snowflake, Loader2 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { WeatherData, DailyForecast } from '../types';
-import { getRealtimeWeather } from '../services/geminiService';
+import { getRealtimeWeather } from '../services/weatherService';
 
 const WeatherIcon = ({ type, className }: { type: string, className?: string }) => {
   const t = type.toLowerCase();

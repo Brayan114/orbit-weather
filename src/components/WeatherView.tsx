@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Wind, Droplets, ArrowUp, ArrowDown, MapPin, Sun, Cloud, CloudRain, CloudLightning, Snowflake, Loader2 } from 'lucide-react';
+import { Search, Wind, Droplets, ArrowUp, ArrowDown, MapPin, Sun, Cloud, CloudRain, CloudLightning, Snowflake, Loader2, Moon } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { WeatherData, DailyForecast } from '../types';
 import { getRealtimeWeather } from '../services/weatherService';
 
 const WeatherIcon = ({ type, className }: { type: string, className?: string }) => {
   const t = type.toLowerCase();
+  if (t.includes('moon') || t.includes('night')) return <Moon className={`text-indigo-300 ${className}`} />;
   if (t.includes('sun') || t.includes('clear')) return <Sun className={`text-yellow-400 ${className}`} />;
   if (t.includes('cloud')) return <Cloud className={`text-gray-400 ${className}`} />;
   if (t.includes('rain') || t.includes('drizzle')) return <CloudRain className={`text-blue-400 ${className}`} />;
@@ -192,18 +193,11 @@ const WeatherView: React.FC = () => {
             <WeatherIcon type={weather.condition} className="w-24 h-24 opacity-80" />
           </div>
 
+          {/* Weather Summary */}
           <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/5 backdrop-blur-sm">
-            <div className="flex items-start gap-3">
-              <div className="p-1.5 bg-indigo-500/20 rounded-full text-indigo-400 mt-0.5 flex-shrink-0">
-                <div className="w-3 h-3 rounded-full bg-indigo-400 animate-pulse" />
-              </div>
-              <div>
-                <p className="text-xs text-indigo-300 uppercase tracking-wider font-bold mb-1">Orbit AI Insight</p>
-                <p className="text-sm text-gray-200 leading-relaxed italic">
-                  "{weather.description}"
-                </p>
-              </div>
-            </div>
+            <p className="text-sm text-gray-200 leading-relaxed italic text-center">
+              "{weather.description}"
+            </p>
           </div>
 
           {/* Details Grid */}

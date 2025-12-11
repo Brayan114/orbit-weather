@@ -4,9 +4,9 @@ const apiKey = (import.meta.env?.VITE_WEATHER_API_KEY as string) || '';
 const BASE_URL = 'https://api.weatherapi.com/v1';
 
 // Map WeatherAPI condition codes to our icon types
-const mapConditionToIcon = (code: number, isDay: number): 'sun' | 'cloud' | 'rain' | 'storm' | 'snow' => {
-    // Sunny/Clear
-    if (code === 1000) return isDay ? 'sun' : 'sun';
+const mapConditionToIcon = (code: number, isDay: number): 'sun' | 'moon' | 'cloud' | 'rain' | 'storm' | 'snow' => {
+    // Sunny/Clear - show moon at night, sun during day
+    if (code === 1000) return isDay ? 'sun' : 'moon';
 
     // Cloudy conditions
     if ([1003, 1006, 1009, 1030, 1135, 1147].includes(code)) return 'cloud';
@@ -27,34 +27,40 @@ const mapConditionToIcon = (code: number, isDay: number): 'sun' | 'cloud' | 'rai
 const generateDescription = (condition: string, temp: number): string => {
     const descriptions: { [key: string]: string[] } = {
         sun: [
-            "Perfect weather for interstellar exploration.",
-            "Solar radiation levels optimal for outdoor activities.",
-            "Clear skies across the planetary surface.",
-            "Excellent visibility for celestial observations.",
+            "Perfect weather for outdoor exploration.",
+            "Clear skies and sunshine ahead.",
+            "Beautiful day in progress.",
+            "Excellent visibility conditions.",
+        ],
+        moon: [
+            "Clear night skies for stargazing.",
+            "Peaceful evening under the stars.",
+            "Night conditions are calm and clear.",
+            "Perfect for an evening stroll.",
         ],
         cloud: [
-            "Atmospheric density increasing. Clouds gathering.",
-            "Nebula-like formations detected in atmosphere.",
-            "Cloud cover obscuring stellar visibility.",
-            "Overcast conditions prevail across sectors.",
+            "Overcast conditions prevailing.",
+            "Cloud cover building overhead.",
+            "Partly to mostly cloudy skies.",
+            "Grey skies dominating the view.",
         ],
         rain: [
-            "Liquid precipitation incoming. Seek shelter.",
-            "Atmospheric moisture reaching critical levels.",
-            "Rain protocol activated. Umbrella recommended.",
-            "Water particles descending from cloud formations.",
+            "Rain expected. Umbrella recommended.",
+            "Wet conditions ahead.",
+            "Precipitation in progress.",
+            "Rainy weather moving through.",
         ],
         storm: [
-            "Electromagnetic disturbance detected. Stay alert.",
-            "Storm system approaching. Batten the hatches.",
-            "Severe weather advisory in effect.",
-            "Thunder protocols engaged.",
+            "Storm system approaching. Stay safe.",
+            "Severe weather possible.",
+            "Thunderstorms in the forecast.",
+            "Weather advisory in effect.",
         ],
         snow: [
-            "Frozen precipitation imminent. Bundle up.",
-            "Ice crystals forming in upper atmosphere.",
-            "Winter conditions detected. Deploy thermal gear.",
-            "Snowfall probability at maximum.",
+            "Snow expected. Bundle up warmly.",
+            "Winter conditions detected.",
+            "Snowfall likely today.",
+            "Cold and snowy weather ahead.",
         ],
     };
 
